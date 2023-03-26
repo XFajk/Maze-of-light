@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ex0rcaifeii"]
+
+[ext_resource type="Material" uid="uid://dlwc44m7bos4t" path="res://Assets/textures/Cube.tres" id="1_ldd2n"]
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/Pickapeble_object.gd" id="1_rbd4n"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cphgp"]
+height = 0.3
+radius = 0.15
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_weshl"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.3
+
+[node name="Cylinder" type="RigidBody3D"]
+script = ExtResource("1_rbd4n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_cphgp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_weshl")
+surface_material_override/0 = ExtResource("1_ldd2n")

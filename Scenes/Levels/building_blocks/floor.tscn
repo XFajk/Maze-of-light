@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp6r4gthg2d47"]
+
+[ext_resource type="Texture2D" uid="uid://djsil4km86rjg" path="res://Assets/textures/ground_texture_albedo.png" id="1_bsbgi"]
+[ext_resource type="ArrayMesh" uid="uid://ei73gvepjj1l" path="res://Assets/3D models/floor_tile.obj" id="1_nbfgw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edc3k"]
+albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
+albedo_texture = ExtResource("1_bsbgi")
+uv1_scale = Vector3(1.276, 1.276, 1.276)
+uv1_offset = Vector3(-0.038, 2.08165e-12, 2.08165e-12)
+uv1_triplanar = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m40mg"]
+data = PackedVector3Array(-5, 0.1, -5, 5, 0.1, -5, -5, 0.1, 5, -5, 0.1, 5, 5, 0.1, -5, 5, 0.1, 5, 5, 0.1, 5, 5, -0.1, 5, -5, 0.1, 5, -5, 0.1, 5, 5, -0.1, 5, -5, -0.1, 5, -5, 0.1, 5, -5, -0.1, 5, -5, 0.1, -5, -5, 0.1, -5, -5, -0.1, 5, -5, -0.1, -5, 5, -0.1, -5, -5, -0.1, -5, 5, -0.1, 5, 5, -0.1, 5, -5, -0.1, -5, -5, -0.1, 5, 5, 0.1, -5, 5, -0.1, -5, 5, 0.1, 5, 5, 0.1, 5, 5, -0.1, -5, 5, -0.1, 5, -5, 0.1, -5, -5, -0.1, -5, 5, 0.1, -5, 5, 0.1, -5, -5, -0.1, -5, 5, -0.1, -5)
+
+[node name="floor" type="Node3D"]
+
+[node name="FloorTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+material_override = SubResource("StandardMaterial3D_edc3k")
+mesh = ExtResource("1_nbfgw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FloorTile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorTile/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_m40mg")

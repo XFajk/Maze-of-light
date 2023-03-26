@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bav1600h5mu5v"]
+
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/Pickapeble_object.gd" id="1_v2u4a"]
+[ext_resource type="Material" uid="uid://dlwc44m7bos4t" path="res://Assets/textures/Cube.tres" id="2_h7rue"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1foxb"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7cfg"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Cube" type="RigidBody3D"]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+can_sleep = false
+script = ExtResource("1_v2u4a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_1foxb")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = ExtResource("2_h7rue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_p7cfg")
